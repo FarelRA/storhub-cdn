@@ -1,0 +1,15 @@
+# Copy to .dev.vars for local dev (wrangler dev reads this)
+GITHUB_PAT="github_pat_..."
+GITHUB_OWNER="your-github-username-or-org"
+# Optional: explicit bucket -> repo map (JSON). If omitted, bucket name = repo name under GITHUB_OWNER
+BUCKET_REPOS='{"my-bucket":"my-org/my-bucket-repo","test":"my-org/test-repo"}'
+# S3 access keys for SigV4 (at least one)
+S3_ACCESS_KEY="AKIAEXAMPLE"
+S3_SECRET_KEY="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+# Optional multi-key map JSON (overrides single pair)
+# S3_KEYS_JSON='{"AKIAEXAMPLE":"secret1","AKIA2":"secret2"}'
+# Chunk size bytes (default 50331648 = 48MiB)
+CHUNK_SIZE="50331648"
+METADATA_TAG="s3-metadata"
+DATA_TAG_PREFIX="s3-data-"
+S3_PUBLIC_READ="false"

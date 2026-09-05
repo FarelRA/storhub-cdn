@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "storhub-cdn",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-08-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "METADATA_TAG": "s3-metadata",
+    "DATA_TAG_PREFIX": "s3-data-",
+    "CHUNK_SIZE": "50331648",
+    "S3_PUBLIC_READ": "false"
+  },
+  "routes": [
+    { "pattern": "s3.example.com/*", "zone_name": "example.com" },
+    { "pattern": "*.s3.example.com/*", "zone_name": "example.com" }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV_CACHE",
+      "id": "local-kv-cache-id",
+      "preview_id": "local-kv-cache-preview"
+    }
+  ],
+  "triggers": { "crons": ["0 3 * * *"] },
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true
+}
